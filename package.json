@@ -1,12 +1,12 @@
 {
-  "name": "webpack-nq-project",
+  "name": "webpack5-website-boilerplate",
   "version": "1.0.0",
-  "description": "Outils pour développer un projet avec webpack de zero",
+  "description": "Simple boilerplate for starting website project with webpack",
   "scripts": {
     "watch": "webpack --mode=development --watch --config webpack.config.js --progress",
     "build": "webpack --mode=production"
   },
-  "author": "Florian Follie",
+  "author": "F0xtr0t",
   "devDependencies": {
     "@babel/core": "7.16.7",
     "@babel/preset-env": "7.16.7",
