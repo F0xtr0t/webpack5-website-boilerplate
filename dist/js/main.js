@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -16,27 +8,14 @@
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ helloWorld)\n/* harmony export */ });\nfunction helloWorld(text) {\n  return text;\n}\n\n//# sourceURL=webpack://webpack-nq-project/./src/js/components/TestComponent.js?");
-
-/***/ }),
-
-/***/ "./src/js/main.js":
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_TestComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TestComponent */ \"./src/js/components/TestComponent.js\");\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  console.log((0,_components_TestComponent__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('Hello'));\n});\n\n//# sourceURL=webpack://webpack-nq-project/./src/js/main.js?");
-
-/***/ }),
-
-/***/ "./src/css/main.scss":
-/*!***************************!*\
-  !*** ./src/css/main.scss ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://webpack-nq-project/./src/css/main.scss?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ helloWorld)
+/* harmony export */ });
+function helloWorld(text) {
+  console.log("blabla");
+  return text;
+}
 
 /***/ })
 
@@ -96,12 +75,31 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	__webpack_require__("./src/js/main.js");
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/css/main.scss");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+var __webpack_exports__ = {};
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_TestComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TestComponent */ "./src/js/components/TestComponent.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log((0,_components_TestComponent__WEBPACK_IMPORTED_MODULE_0__["default"])('Hello world'));
+});
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!***************************!*\
+  !*** ./src/css/main.scss ***!
+  \***************************/
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+})();
+
 /******/ })()
 ;
+//# sourceMappingURL=main.js.map

@@ -1,7 +1,9 @@
 # Browsers that we support
 
-Chrome 60
-Safari 11
-IOS 11
-Firefox 54
-Edge 15
+defaults
+Chrome >= 100
+Safari >= 12
+IOS >= 12
+Firefox >= 93
+Edge >= 100
+not OperaMini all

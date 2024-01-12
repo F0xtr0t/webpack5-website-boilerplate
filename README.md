@@ -33,11 +33,12 @@ The following folders are automatically generated in `/ dist /`:
 The project is configured to use ES6 and modern browsers. You can use the `.browserslistrc` file to adjust your settings :
 
 Default :
-Chrome 60
-Safari 11
-IOS 11
-Firefox 54
-Edge 15
+Chrome >= 100
+Safari >= 12
+IOS >= 12
+Firefox >= 93
+Edge >= 100
+not OperaMini all
 
 The project also uses `postcss-loader` which can be configured directly from the file `postcss.config.js` at the root
 
@@ -47,6 +48,7 @@ Plugins :
 - [MiniCssExtractPlugin](https://www.npmjs.com/package/mini-css-extract-plugin)
 - [CopyPlugin](https://www.npmjs.com/package/copy-webpack-plugin)
 - [WebpackManifestPlugin](https://www.npmjs.com/package/webpack-manifest-plugin)
+- [webpack-remove-empty-scripts](https://www.npmjs.com/package/webpack-remove-empty-scripts)
 
 Loaders : 
 - [css-loader](https://www.npmjs.com/package/css-loader)
