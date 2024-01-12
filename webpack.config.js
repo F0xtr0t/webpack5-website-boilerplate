@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const env = process.argv[2] === '--mode=development' ? 'development' : 'production';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const RemoveEmptyScriptsPlugin  = require('webpack-remove-empty-scripts');
 const CopyPlugin = require("copy-webpack-plugin");
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
@@ -9,6 +10,11 @@ module.exports = (e, args) => {
   const plugins = [];
   const entryDir = './src/'; // Entries directory
   const outputDir = './dist/'; // outputs directory
+
+  // Prevent empty js file from .scss entries
+  plugins.push(
+      new RemoveEmptyScriptsPlugin()
+  );
 
   // Extract css from js to simple css file
   plugins.push(
@@ -30,7 +36,25 @@ module.exports = (e, args) => {
 
   // Webpack progress bar (default)
   plugins.push(
-      new webpack.ProgressPlugin()
+      new webpack.ProgressPlugin({
+        activeModules: false,
+        entries: false,
+        modules: false,
+        percentBy: 'entries',
+        handler(percentage, message, ...args) {
+          if(message !== "cache") {
+            if(percentage === 1) {
+              let date = new Date();
+              let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
+              let minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
+              let seconds = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
+              console.log("["+hour+":"+minutes+":"+seconds+"] Done !");
+            } else {
+              console.info((percentage * 100) + '%', message);
+            }
+          }
+        }
+      })
   )
 
   // Webpack manifest.json generator
@@ -45,7 +69,9 @@ module.exports = (e, args) => {
     test: /\.sc|ass$/,
     exclude: /node_modules/,
     use: [
-      { loader: MiniCssExtractPlugin.loader },
+      {
+        loader: MiniCssExtractPlugin.loader
+      },
       { loader: "css-loader",
         options: {
           importLoaders: 1,
@@ -88,6 +114,7 @@ module.exports = (e, args) => {
 
   return {
     mode: args.mode,
+    devtool: args.mode === 'production' ? false : 'source-map',
     entry: [
       path.join(__dirname, entryDir + 'js/main.js'),
       path.join(__dirname, entryDir + 'css/main.scss')
